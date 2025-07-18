@@ -21,7 +21,7 @@
     "@tailwindcss/vite": "^4.1.4",
     "bootstrap-icons": "^1.11.3",
     "framer-motion": "^12.7.4",
-    "pdfjs-dist": "^5.2.133",
+    "pdfjs-dist": "^3.0.279",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-pdf": "^9.2.1",
@@ -40,6 +40,6 @@
     "globals": "^16.0.0",
     "postcss": "^8.5.3",
     "tailwindcss": "^4.1.4",
-    "vite": "^6.3.1"
+    "vite": "^6.3.5"
   }
 }
