@@ -2,44 +2,44 @@ import { useCallback } from "react";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
 
-const ParticleBackground = ({ id = "tsparticles" }) => {
+const ParticleBackground = () => {
   const particlesInit = useCallback(async (engine) => {
     await loadSlim(engine);
   }, []);
 
   return (
     <Particles
-      id={id}
+      id="tsparticles"
       init={particlesInit}
-      className="absolute inset-0"
+      className="absolute inset-0 z-0"
       options={{
         fpsLimit: 120,
         particles: {
           number: {
-            value: 80,
+            value: 100,
             density: {
               enable: true,
               value_area: 800
             }
           },
           color: {
-            value: "#60a5fa"
+            value: ["#00ffff", "#ff00ff", "#ffff00", "#00ff00"]
           },
           shape: {
-            type: "circle"
+            type: ["circle", "triangle"]
           },
           opacity: {
-            value: 0.2,
+            value: 0.3,
             random: true,
             anim: {
               enable: true,
-              speed: 1,
+              speed: 0.5,
               opacity_min: 0.1,
               sync: false
             }
           },
           size: {
-            value: 3,
+            value: 2,
             random: true,
             anim: {
               enable: true,
@@ -50,12 +50,24 @@ const ParticleBackground = ({ id = "tsparticles" }) => {
           },
           move: {
             enable: true,
-            speed: 0.6,
+            speed: 1,
             direction: "none",
             random: true,
             straight: false,
             out_mode: "out",
-            bounce: false
+            bounce: false,
+            attract: {
+              enable: false,
+              rotateX: 600,
+              rotateY: 1200
+            }
+          },
+          links: {
+            enable: true,
+            distance: 150,
+            color: "#00ffff",
+            opacity: 0.2,
+            width: 1
           }
         },
         interactivity: {
@@ -63,7 +75,7 @@ const ParticleBackground = ({ id = "tsparticles" }) => {
           events: {
             onhover: {
               enable: true,
-              mode: "repulse"
+              mode: "grab"
             },
             onclick: {
               enable: true,
@@ -72,9 +84,11 @@ const ParticleBackground = ({ id = "tsparticles" }) => {
             resize: true
           },
           modes: {
-            repulse: {
-              distance: 100,
-              duration: 0.4
+            grab: {
+              distance: 200,
+              line_linked: {
+                opacity: 0.5
+              }
             },
             push: {
               particles_nb: 4
@@ -83,11 +97,7 @@ const ParticleBackground = ({ id = "tsparticles" }) => {
         },
         retina_detect: true,
         background: {
-          color: "transparent",
-          image: "",
-          position: "50% 50%",
-          repeat: "no-repeat",
-          size: "cover"
+          color: "transparent"
         }
       }}
     />

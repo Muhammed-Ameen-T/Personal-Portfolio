@@ -18,27 +18,50 @@ const SkillCard = ({ skill, index, categoryIndex }) => {
       }}
       whileHover={{
         scale: 1.05,
-        rotate: 2,
-        boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.5)",
+        rotateY: 10,
+        boxShadow: "0 20px 40px -10px rgba(0, 255, 255, 0.3)",
         zIndex: 10
       }}
-      className="bg-gray-800/80 backdrop-blur-sm rounded-lg overflow-hidden border border-blue-800/50 
-                 group transition-all duration-300 flex flex-col items-center justify-center 
-                 hover:border-blue-500 transform-gpu relative"
+      className="interactive bg-gradient-to-br from-slate-800/90 via-slate-900/80 to-slate-800/90 backdrop-blur-sm rounded-xl overflow-hidden 
+                 border border-cyan-400/20 group transition-all duration-500 flex flex-col items-center justify-center 
+                 hover:border-cyan-400/60 transform-gpu relative h-32"
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-800/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      {/* Holographic background effect */}
+      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
       
-      <div className="bg-gradient-to-b from-gray-800 to-gray-900 w-full p-5 flex items-center justify-center h-24 relative group-hover:from-gray-800/80 group-hover:to-blue-900/20 transition-all duration-500">
+      {/* Animated border */}
+      <motion.div 
+        className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        style={{
+          background: 'linear-gradient(45deg, #00ffff, #ff00ff, #ffff00, #00ff00)',
+          backgroundSize: '400% 400%',
+          padding: '2px'
+        }}
+        animate={{
+          backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
+        }}
+        transition={{
+          duration: 3,
+          repeat: Infinity,
+          ease: "linear"
+        }}
+      >
+        <div className="w-full h-full bg-slate-800/95 rounded-xl"></div>
+      </motion.div>
+      
+      <div className="relative z-10 flex flex-col items-center justify-center h-full p-4">
         <motion.div
-          initial={{ y: 0 }}
-          whileHover={{ y: -5 }}
-          className="relative z-10"
+          initial={{ y: 0, rotateY: 0 }}
+          whileHover={{ y: -5, rotateY: 10 }}
+          className="relative mb-3"
         >
           <motion.img 
             src={skill.icon} 
             alt={skill.name} 
-            className="h-12 w-12 object-contain filter drop-shadow-glow group-hover:drop-shadow-glow transition-all duration-500"
-            animate={{ rotateY: [0, 10, 0, -10, 0] }}
+            className="h-12 w-12 object-contain filter drop-shadow-lg group-hover:drop-shadow-[0_0_10px_rgba(0,255,255,0.5)] transition-all duration-500"
+            animate={{ 
+              rotateY: [0, 5, 0, -5, 0]
+            }}
             transition={{ 
               duration: 5, 
               repeat: Infinity,
@@ -46,37 +69,61 @@ const SkillCard = ({ skill, index, categoryIndex }) => {
               ease: "easeInOut" 
             }}
           />
+          
+          {/* Glow effect behind icon */}
+          <motion.div 
+            className="absolute inset-0 bg-cyan-400/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.2, 0.4, 0.2]
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
         </motion.div>
         
-        <motion.div 
-          className="absolute inset-0 bg-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
-          initial={{ scale: 0.8, opacity: 0 }}
-          whileHover={{ scale: 1, opacity: 1 }}
-        />
+        <motion.p 
+          className="text-cyan-300 font-medium text-sm text-center group-hover:text-cyan-100 transition-colors duration-300 relative"
+          initial={{ y: 10, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2 }}
+        >
+          {skill.name}
+          
+          {/* Text glow effect */}
+          <motion.span
+            className="absolute inset-0 text-cyan-300 opacity-0 group-hover:opacity-50 transition-opacity duration-300"
+            style={{
+              textShadow: '0 0 10px #00ffff'
+            }}
+          >
+            {skill.name}
+          </motion.span>
+        </motion.p>
       </div>
       
-      <motion.div 
-        className="p-3 text-center w-full bg-gradient-to-r from-blue-900/30 to-indigo-900/30 border-t border-blue-900/30 relative z-10"
-        initial={{ y: 10, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.2 }}
-      >
-        <p className="text-blue-300 font-medium text-sm text-center group-hover:text-blue-200 transition-colors duration-300">
-          {skill.name}
-        </p>
-      </motion.div>
-      
-      <motion.div 
-        className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-lg blur opacity-0 group-hover:opacity-20 transition duration-1000 group-hover:duration-300"
-        animate={{
-          backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-        }}
-        transition={{
-          duration: 5,
-          repeat: Infinity,
-          repeatType: "mirror",
-        }}
-      />
+      {/* Floating particles */}
+      {[...Array(3)].map((_, i) => (
+        <motion.div
+          key={i}
+          className={`absolute w-1 h-1 bg-cyan-400 rounded-full opacity-0 group-hover:opacity-60 ${
+            i === 0 ? 'top-2 right-2' : i === 1 ? 'bottom-2 left-2' : 'top-1/2 right-1'
+          }`}
+          animate={{
+            scale: [1, 1.5, 1],
+            opacity: [0.3, 0.8, 0.3],
+            y: [0, -10, 0]
+          }}
+          transition={{
+            duration: 2 + i * 0.5,
+            repeat: Infinity,
+            delay: i * 0.3
+          }}
+        />
+      ))}
     </motion.div>
   );
 };

@@ -1,24 +1,24 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Navbar from './components/Navbar.jsx';
+import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import About from './components/About.jsx';
-import Skills from './components/Skills.jsx';
-import Projects from './components/Projects.jsx';
-import Contact from './components/Contact.jsx';
-import Resume from './components/Resume.jsx';
-import CustomCursor from './components/CustomCursor.jsx';
-import Footer from './components/Footer.jsx';
+import About from './components/About';
+import Skills from './components/Skills';
+import Projects from './components/Projects';
+import Contact from './components/Contact';
+import CustomCursor from './components/CustomCursor';
+import Footer from './components/Footer';
+import ParticleBackground from './components/ParticleBackground';
 
 function App() {
   const [loading, setLoading] = useState(true);
   const [activeSection, setActiveSection] = useState('hero');
 
   useEffect(() => {
-    // Simulate loading to show animation (reduced to 1.5s for better UX)
+    // Simulate loading with enhanced animation
     setTimeout(() => {
       setLoading(false);
-    }, 1500);
+    }, 2000);
 
     // Intersection Observer for sections
     const sections = document.querySelectorAll('section');
@@ -44,33 +44,63 @@ function App() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-screen bg-blue-950">
+      <div className="flex items-center justify-center h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-cyan-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+          <div className="absolute top-3/4 right-1/4 w-32 h-32 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+          <div className="absolute bottom-1/4 left-1/2 w-32 h-32 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+        </div>
+        
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
           animate={{ 
-            scale: [0, 1, 1.2, 1],
+            scale: [0, 1.2, 1],
             opacity: [0, 1]
           }}
           transition={{ 
-            duration: 1.5, 
+            duration: 2, 
             ease: "easeInOut",
-            times: [0, 0.6, 0.8, 1]
+            times: [0, 0.6, 1]
           }}
-          className="text-5xl text-blue-300 font-bold relative"
+          className="text-center relative z-10"
         >
-          <span>Welcome to My Portfolio</span>
           <motion.div 
-            className="absolute -inset-8 border-2 rounded-full opacity-0"
+            className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-4"
             animate={{ 
-              scale: [1, 1.5],
-              opacity: [0.5, 0],
+              backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
             }}
             transition={{
-              duration: 1.5,
+              duration: 3,
+              repeat: Infinity,
+              repeatType: "loop"
+            }}
+            style={{
+              backgroundSize: '200% 200%'
+            }}
+          >
+            AMEEN
+          </motion.div>
+          <motion.div 
+            className="text-xl text-gray-300 tracking-widest"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1, duration: 0.8 }}
+          >
+            INITIALIZING PORTFOLIO...
+          </motion.div>
+          
+          <motion.div 
+            className="absolute -inset-8 border-2 border-cyan-400 rounded-lg opacity-30"
+            animate={{ 
+              scale: [1, 1.1, 1],
+              opacity: [0.3, 0.6, 0.3],
+              rotate: [0, 180, 360]
+            }}
+            transition={{
+              duration: 4,
               repeat: Infinity,
               repeatType: "loop",
-              ease: "easeOut",
-              times: [0, 1]
+              ease: "linear"
             }}
           />
         </motion.div>
@@ -79,19 +109,18 @@ function App() {
   }
 
   return (
-    <div className="bg-blue-950 text-gray-100 min-h-screen overflow-x-hidden">
+    <div className="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-gray-100 min-h-screen overflow-x-hidden relative">
+      <ParticleBackground />
       <CustomCursor />
       <Navbar activeSection={activeSection} />
       
-      <main className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <main className="relative z-10">
         <AnimatePresence mode="wait">
           <Hero key="hero" />
           <About key="about" />
           <Skills key="skills" />
-          
           <Projects key="projects" />
           <Contact key="contact" />
-          {/* <Resume key="resume" /> */}
         </AnimatePresence>
       </main>
       

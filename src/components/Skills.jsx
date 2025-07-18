@@ -1,47 +1,6 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import SkillCard from './SkillCard';
-import ParticleBackground from './ParticleBackground';
-
-// Import your skill images (using the same imports as the original file)
-import javascriptIcon from '../assets/js.png';
-import typescriptIcon from '../assets/typescript.png';
-import html5Icon from '../assets/html.png';
-import css3Icon from '../assets/css-3.png';
-import reactIcon from '../assets/react.png';
-import tailwindIcon from '../assets/tailwind.png';
-import bootstrapIcon from '../assets/bootstrap.png';
-import nextjsIcon from '../assets/nextjs.png';
-import nodejsIcon from '../assets/node-js.png';
-import expressIcon from '../assets/express.png';
-import mongodbIcon from '../assets/mongoDB.png';
-import postgresqlIcon from '../assets/postgres.png';
-import redisIcon from '../assets/redis.png';
-import postmanIcon from '../assets/postman-icon.png';
-import githubIcon from '../assets/github.png';
-import gitIcon from '../assets/git.png';
-import firebaseIcon from '../assets/firebase.png';
-import reduxIcon from '../assets/redux.png';
-import socketioIcon from '../assets/Socket.io.png';
-import puppeteerIcon from '../assets/puppeteer.png';
-import nodemailerIcon from '../assets/nm_logo_200x136.png';
-import jwtIcon from '../assets/icons8-jwt-240.png';
-import joiIcon from '../assets/joi.png';
-import cloudinaryIcon from '../assets/cloudinary.png';
-import multerIcon from '../assets/multer.png';
-import awsIcon from '../assets/aws.png';
-import gcpIcon from '../assets/google-cloud.png';
-import vercelIcon from '../assets/vercel.png';
-import renderIcon from '../assets/render.png';
-import figmaIcon from '../assets/figma.png';
-import photoshopIcon from '../assets/photoshop.png';
-import illustratorIcon from '../assets/illustrator.png';
-import officeIcon from '../assets/office.png';
-import stripeIcon from '../assets/stripe.png';
-import paypalIcon from '../assets/paypal.png';
-import dockerIcon from '../assets/docker.png';
-import kubernetesIcon from '../assets/kubernetes.png';
-import razorpayIcon from '../assets/razorpay.png';
 
 const Skills = () => {
   const ref = useRef(null);
@@ -50,7 +9,6 @@ const Skills = () => {
     offset: ["start end", "end start"],
   });
 
-  // Transform values for parallax effect
   const y = useTransform(scrollYProgress, [0, 1], [0, -100]);
   const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.3, 1, 0.3]);
 
@@ -59,96 +17,119 @@ const Skills = () => {
       name: "Programming Languages",
       description: "Core languages I use to build applications",
       skills: [
-        { name: "JavaScript", icon: javascriptIcon },
-        { name: "TypeScript", icon: typescriptIcon },
+        { name: "JavaScript", icon: "/src/assets/js.png" },
+        { name: "TypeScript", icon: "/src/assets/typescript.png" },
       ]
     },
     {
       name: "Frontend Development",
       description: "Technologies I use to create beautiful user interfaces",
       skills: [
-        { name: "HTML5", icon: html5Icon },
-        { name: "CSS3", icon: css3Icon },
-        { name: "ReactJS", icon: reactIcon },
-        { name: "TailwindCSS", icon: tailwindIcon },
-        { name: "Bootstrap", icon: bootstrapIcon },
-        { name: "Next.js", icon: nextjsIcon },
+        { name: "HTML5", icon: "/src/assets/html.png" },
+        { name: "CSS3", icon: "/src/assets/css-3.png" },
+        { name: "ReactJS", icon: "/src/assets/react.png" },
+        { name: "TailwindCSS", icon: "/src/assets/tailwind.png" },
+        { name: "Bootstrap", icon: "/src/assets/bootstrap.png" },
+        { name: "Next.js", icon: "/src/assets/nextjs.png" },
       ]
     },
     {
       name: "Backend & Database",
       description: "Tools that power the server-side of my applications",
       skills: [
-        { name: "Node.js", icon: nodejsIcon },
-        { name: "Express.js", icon: expressIcon },
-        { name: "MongoDB", icon: mongodbIcon },
-        { name: "PostgreSQL", icon: postgresqlIcon },
-        { name: "Redis", icon: redisIcon },
+        { name: "Node.js", icon: "/src/assets/node-js.png" },
+        { name: "Express.js", icon: "/src/assets/express.png" },
+        { name: "MongoDB", icon: "/src/assets/mongoDB.png" },
+        { name: "PostgreSQL", icon: "/src/assets/postgres.png" },
+        { name: "Redis", icon: "/src/assets/redis.png" },
       ]
     },
     {
       name: "Libraries & Dev Tools",
       description: "Essential utilities that enhance my development workflow",
       skills: [
-        { name: "GitHub", icon: githubIcon },
-        { name: "Git", icon: gitIcon },
-        { name: "Firebase", icon: firebaseIcon },
-        { name: "Redux", icon: reduxIcon },
-        { name: "Socket.io", icon: socketioIcon },
-        { name: "Puppeteer", icon: puppeteerIcon },
-        { name: "Nodemailer", icon: nodemailerIcon },
-        { name: "JWT", icon: jwtIcon },
-        { name: "Joi", icon: joiIcon },
-        { name: "Cloudinary", icon: cloudinaryIcon },
-        { name: "Multer", icon: multerIcon },
-        { name: "Postman", icon: postmanIcon },
+        { name: "GitHub", icon: "/src/assets/github.png" },
+        { name: "Git", icon: "/src/assets/git.png" },
+        { name: "Firebase", icon: "/src/assets/firebase.png" },
+        { name: "Redux", icon: "/src/assets/redux.png" },
+        { name: "Socket.io", icon: "/src/assets/Socket.io.png" },
+        { name: "Puppeteer", icon: "/src/assets/puppeteer.png" },
+        { name: "Nodemailer", icon: "/src/assets/nm_logo_200x136.png" },
+        { name: "JWT", icon: "/src/assets/icons8-jwt-240.png" },
+        { name: "Joi", icon: "/src/assets/joi.png" },
+        { name: "Cloudinary", icon: "/src/assets/cloudinary.png" },
+        { name: "Multer", icon: "/src/assets/multer.png" },
+        { name: "Postman", icon: "/src/assets/postman-icon.png" },
       ]
     },
     {
       name: "Cloud & DevOps",
       description: "Platforms I use to deploy and scale applications",
       skills: [
-        { name: "AWS", icon: awsIcon },
-        { name: "Google Cloud", icon: gcpIcon },
-        { name: "Vercel", icon: vercelIcon },
-        { name: "Render", icon: renderIcon },
-        { name: "Docker", icon: dockerIcon },
-        { name: "Kubernetes", icon: kubernetesIcon },
+        { name: "AWS", icon: "/src/assets/aws.png" },
+        { name: "Google Cloud", icon: "/src/assets/google-cloud.png" },
+        { name: "Vercel", icon: "/src/assets/vercel.png" },
+        { name: "Render", icon: "/src/assets/render.png" },
+        { name: "Docker", icon: "/src/assets/docker.png" },
+        { name: "Kubernetes", icon: "/src/assets/kubernetes.png" },
       ]
     },
     {
       name: "Design & Content",
       description: "Creative tools that help me design and visualize",
       skills: [
-        { name: "Figma", icon: figmaIcon },
-        { name: "Adobe Photoshop", icon: photoshopIcon },
-        { name: "Adobe Illustrator", icon: illustratorIcon },
-        { name: "Microsoft Office", icon: officeIcon },
+        { name: "Figma", icon: "/src/assets/figma.png" },
+        { name: "Adobe Photoshop", icon: "/src/assets/photoshop.png" },
+        { name: "Adobe Illustrator", icon: "/src/assets/illustrator.png" },
+        { name: "Microsoft Office", icon: "/src/assets/office.png" },
       ]
     },
     {
       name: "Payment Gateways",
       description: "Solutions I implement for secure online transactions",
       skills: [
-        { name: "Stripe", icon: stripeIcon },
-        { name: "PayPal", icon: paypalIcon },
-        { name: "Razorpay", icon: razorpayIcon },
+        { name: "Stripe", icon: "/src/assets/stripe.png" },
+        { name: "PayPal", icon: "/src/assets/paypal.png" },
+        { name: "Razorpay", icon: "/src/assets/razorpay.png" },
       ]
     },
   ];
 
   return (
     <section id="skills" ref={ref} className="py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-blue-900/20 z-0"></div>
-      <ParticleBackground id="skills-particles" />
+      {/* Background Effects */}
+      <div className="absolute inset-0">
+        <motion.div 
+          className="absolute top-1/3 left-1/4 w-96 h-96 bg-gradient-to-r from-cyan-500/5 to-purple-500/5 rounded-full blur-3xl"
+          animate={{ 
+            scale: [1, 1.2, 1],
+            rotate: [0, 180, 360]
+          }}
+          transition={{ 
+            duration: 20, 
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+        <motion.div 
+          className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-gradient-to-r from-purple-500/5 to-pink-500/5 rounded-full blur-3xl"
+          animate={{ 
+            scale: [1.2, 1, 1.2],
+            rotate: [360, 180, 0]
+          }}
+          transition={{ 
+            duration: 25, 
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+      </div>
       
       <motion.div 
         className="absolute inset-0 pointer-events-none z-0"
         style={{ y, opacity }}
       >
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-blue-900/20 to-transparent"></div>
-        <div className="absolute bottom-0 left-0 w-full h-full bg-gradient-to-t from-blue-900/20 to-transparent"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/30 via-blue-950/10 to-transparent opacity-70"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-cyan-900/10 via-purple-950/5 to-transparent opacity-70"></div>
       </motion.div>
       
       <div className="container mx-auto px-4 relative z-10">
@@ -166,8 +147,16 @@ const Skills = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-blue-300 mb-4">My Skills</h2>
-            <div className="w-24 h-1 bg-blue-500 mx-auto mb-6 rounded-full"></div>
+            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-4">
+              My Skills
+            </h2>
+            <motion.div 
+              className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 mx-auto mb-6 rounded-full"
+              initial={{ width: 0 }}
+              whileInView={{ width: "6rem" }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            />
             <p className="text-gray-300 max-w-2xl mx-auto text-lg">
               A comprehensive collection of technologies and tools I've mastered throughout my journey as a developer.
             </p>
@@ -189,10 +178,10 @@ const Skills = () => {
                 transition={{ duration: 0.6 }}
                 className="mb-10 text-center"
               >
-                <h3 className="text-2xl font-bold mb-3 inline-flex items-center justify-center text-blue-300 relative">
+                <h3 className="text-2xl md:text-3xl font-bold mb-3 text-cyan-300 relative inline-block">
                   <span className="relative z-10">{category.name}</span>
                   <motion.span 
-                    className="absolute bottom-0 left-0 right-0 h-3 bg-blue-500/20 -z-0"
+                    className="absolute bottom-0 left-0 right-0 h-3 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 -z-0 rounded-full"
                     initial={{ width: 0 }}
                     whileInView={{ width: "100%" }}
                     viewport={{ once: true }}
@@ -202,7 +191,7 @@ const Skills = () => {
                 <p className="text-gray-400 max-w-2xl mx-auto">{category.description}</p>
               </motion.div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
                 {category.skills.map((skill, skillIndex) => (
                   <SkillCard 
                     key={skillIndex} 
